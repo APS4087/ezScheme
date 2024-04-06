@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import GenderCheck from './GenderCheck'
 import { Link } from 'react-router-dom'
-import useSignup from '../../hooks/useSignUp';
+import useSignup from '../../hooks/useSignUp'
 
 
 const SignUp = () => {
@@ -24,9 +24,11 @@ const SignUp = () => {
   }
   const handleSubmits = async (e) => {
     e.preventDefault();
-    //console.log(userSignUpInput);
+    console.log(userSignUpInput);
     await signup(userSignUpInput);
   }
+
+  
   return (
     <div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
         <div className="w-full p-6 bg-green-300 rounded-lg shadow-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border"> 

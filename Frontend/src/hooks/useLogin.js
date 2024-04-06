@@ -1,39 +1,40 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../context/auth.context";
+import { useNavigate } from 'react-router-dom';
+
 
 const useLogin = () => {
 	const [loading, setLoading] = useState(false);
 	const { setAuthUser } = useAuthContext();
+    const navigate = useNavigate();
 
-	const login = async (username, password) => {
-		const success = handleInputErrors(username, password);
+	const login = async (userName, password) => {
+		const success = handleInputErrors(userName, password);
 		if (!success) return;
 		setLoading(true);
 		try {
 			const res = await fetch("/api/auth/login", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ username, password }),
+				body: JSON.stringify({ userName, password }),
 			});
-            console.log(username, password);
+            console.log(userName, password);
             
             
-			try {
-                const data = await res.json();
+			
+            const data = await res.json();
                 console.log(data);
                 // Process data
-            } catch (error) {
-                
-                console.error("Error parsing JSON response:", error);
-                // Handle error gracefully, e.g., display a generic error message to the user
-            }
+            
 			if (data.error) {
 				throw new Error(data.error);
 			}
-
+            console.log("here")
 			localStorage.setItem("sys-user", JSON.stringify(data));
 			setAuthUser(data);
+            //navigate('/hm')
+
 		} catch (error) {
 			toast.error(error.message);
 		} finally {

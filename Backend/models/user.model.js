@@ -27,6 +27,11 @@ const userSchema = new mongoose.Schema({
     profilePic: {
         type: String,
         default:""
+    },
+
+    additionalInfo: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'AdditionalInfo' // Reference to additional information schema
     }
 },{timestamps: true}); 
 
