@@ -29,7 +29,7 @@ function App() {
          element={authUser ? <SchemeRecommend/> : <Login /> } />
       <Route
         path='/signup'
-        element={authUser ? <Navigate to='/' /> : <SignUp />}
+        element={authUser ? <SignUp/> : <Navigate to = '/SchemeRecommend'/>}
       />
       <Route
         path='/additional-info'

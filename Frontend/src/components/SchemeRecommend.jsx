@@ -3,15 +3,22 @@ import React from 'react';
 export const SchemeRecommend = () => {
     return (
         <div className="scheme p-8">
-            <div className="mb-8">
-                <h1 className="text-3xl font-bold mb-4">Scheme Recommendations</h1>
-                <p>Chat with our virtual assistant to identify the best schemes for your business needs</p>
-                <div className="subhead mt-4">
-                    <p>*Chatbot goes here*</p>
+        <div className="mb-8">
+            <h1 className="text-3xl font-bold mb-4">Scheme Recommendations</h1>
+            <p>Chat with our virtual assistant to identify the best schemes for your business needs</p>
+            <div className="subhead mt-4 flex">
+                {/* Video column */}
+                <div className="video-column mr-8 flex-grow">
+                    {/* Video goes here */}
+                    <video className="mt-4" width="300" height="550" controls>
+                        <source src={'public/SchemeGenerated1.mov'} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
-            </div>
-
-            <hr className="my-8" />
+                </div>
+                </div>
+                
+        <hr className="my-8" />
 
             <div>
                 <div className="head">
