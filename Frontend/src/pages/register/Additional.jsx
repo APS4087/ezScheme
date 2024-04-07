@@ -8,12 +8,12 @@ const AdditionalInfo = () => {
     uniqueEntityNumber: '',
     sector: '',
     subSector: '',
-    yrsInOperation: '',
+    yearsInOperation: '',
     numberOfEmployees: '',
     annualSalesTurnover: '',
-    percentageOfSingapore_PR_owned: '',
-    registered_in_sg: '',
-    GST_registered_business: ''
+    percentageOfSingaporePROwned: '',
+    registeredInSingapore: '',
+    GSTRegisteredBusiness: ''
   });
 
   const { loading, addingInfo} = useAddAdditionalInfo();
@@ -24,42 +24,31 @@ const AdditionalInfo = () => {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
-      <div className='w-full p-6 bg-green-300 rounded-lg shadow-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border'>
-        <div className='hero-content flex-col lg:flex-row-reverse'>
-          <div className='text-center lg:text-left'>
-            <h1 className='text-5xl font-bold'>Additional Information</h1>
-            <p className='py-6'>Provide additional information</p>
-            <img src='/additionalInfoIcon.svg' alt='Additional Info Image' className='max-w-60 h-auto' />
-          </div>
-          <form className='card-body flex flex-col md:flex-row md:flex-wrap gap-4' onSubmit={handleSubmit}>
-            {Object.keys(additionalInfo).map((key) => (
-              <div key={key} className='flex flex-col w-full md:w-1/2 lg:w-1/3'>
-                <label className='label'>
-                  <span className='label-text'>{key}</span>
-                </label>
-                <input
-                  type='text'
-                  placeholder={`Enter ${key}`}
-                  className='input input-bordered'
-                  required
-                  value={additionalInfo[key]}
-                  onChange={(e) => setAdditionalInfo({ ...additionalInfo, [key]: e.target.value })}
-                />
-              </div>
-            ))}
-            
-            
-            <div className='w-full flex flex-col items-center'>
-            <div className="text-left w-full mb-4">
-                <Link to="/login" className="text-blue-500 hover:text-blue-700">Have an account!</Link>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+      <div style={{ backgroundColor: '#fff', padding: '30px', borderRadius: '10px', boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)', maxWidth: '600px', width: '100%' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '1.5rem' }}>Additional Information</h1>
+        <p style={{ fontSize: '1.5rem', textAlign: 'center', marginBottom: '2rem' }}>Provide additional information</p>
+        <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }} onSubmit={handleSubmit}>
+          {Object.keys(additionalInfo).map((key) => (
+            <div key={key} style={{ display: 'flex', flexDirection: 'column' }}>
+              <label style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#333' }}>{key.replace(/([A-Z])/g, ' $1').trim()}</label>
+              <input
+                type='text'
+                placeholder={`Enter ${key}`}
+                style={{ padding: '0.5rem', borderRadius: '5px', border: '1px solid #ccc' }}
+                required
+                value={additionalInfo[key]}
+                onChange={(e) => setAdditionalInfo({ ...additionalInfo, [key]: e.target.value })}
+              />
             </div>
-            <button className='btn btn-block btn-sm border border-slate-700 py-2 px-4' disabled={loading}>
-                {loading ? <span className='loading loading-spinner'></span> : 'Start without registration'}
+          ))}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '2rem' }}>
+            <Link to="/login" style={{ fontSize: '1.2rem', color: '#007bff', textDecoration: 'none', marginBottom: '1rem' }}>Have an account?</Link>
+            <button style={{ backgroundColor: '#007bff', color: '#fff', border: 'none', padding: '0.5rem 1rem', borderRadius: '5px', cursor: 'pointer', fontSize: '1.2rem' }} disabled={loading}>
+              {loading ? <span className='loading loading-spinner'></span> : 'Start without registration'}
             </button>
-            </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   );
